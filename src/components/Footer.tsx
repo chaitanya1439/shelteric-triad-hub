@@ -12,7 +12,7 @@ const Footer: React.FC = () => {
           <div>
             <h2 className="text-2xl font-bold mb-4">Shelteric</h2>
             <p className="text-gray-300 mb-6">
-              Your one-stop platform for stays, food, and travel services.
+              Your one-stop platform for stays, food, and travel services in Hyderabad.
               Bringing convenience to your fingertips.
             </p>
             <div className="flex space-x-4">
@@ -102,7 +102,7 @@ const Footer: React.FC = () => {
               </div>
               <div className="flex items-start space-x-3">
                 <Phone size={20} className="text-brand-blue mt-0.5" />
-                <span className="text-gray-300">+1 (234) 567-8900</span>
+                <span className="text-gray-300">+91 9876543210</span>
               </div>
             </div>
             <div className="mt-6">

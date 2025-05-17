@@ -1,5 +1,7 @@
+
 import React from 'react';
 import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 import { BedDouble, Calendar, Users } from 'lucide-react';
 
 const Stays: React.FC = () => {
@@ -103,6 +105,7 @@ const Stays: React.FC = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

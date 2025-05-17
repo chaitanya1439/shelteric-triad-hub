@@ -1,9 +1,11 @@
+
 import React from 'react';
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 
 const NotFound: React.FC = () => {
   const location = useLocation();
@@ -18,7 +20,7 @@ const NotFound: React.FC = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
-      <div className="text-center p-8">
+      <div className="flex-1 text-center p-8">
         <h1 className="text-6xl font-bold text-brand-blue mb-4">404</h1>
         <p className="text-2xl text-gray-700 mb-6">Oops! Page not found</p>
         <p className="text-gray-600 mb-8 max-w-md mx-auto">
@@ -28,6 +30,7 @@ const NotFound: React.FC = () => {
           <Link to="/">Return to Home</Link>
         </Button>
       </div>
+      <Footer />
     </div>
   );
 };

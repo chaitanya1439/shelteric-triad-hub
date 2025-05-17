@@ -1,5 +1,7 @@
+
 import React, { useState } from 'react';
 import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 import { CarTaxiFront } from 'lucide-react';
 
 const Travel: React.FC = () => {
@@ -49,7 +51,7 @@ const Travel: React.FC = () => {
           )}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="bg-white p-6 rounded-xl shadow-sm">
             <div className="w-12 h-12 bg-brand-green rounded-full flex items-center justify-center mb-4">
               <CarTaxiFront className="text-white" size={20} />
@@ -57,17 +59,25 @@ const Travel: React.FC = () => {
             <h3 className="text-xl font-bold mb-2">Diverse Fleet</h3>
             <p className="text-gray-600">Choose from a variety of vehicle types to suit your specific needs.</p>
           </div>
+          
+          <div className="bg-white p-6 rounded-xl shadow-sm">
+            <div className="w-12 h-12 bg-brand-green rounded-full flex items-center justify-center mb-4">
+              <CarTaxiFront className="text-white" size={20} />
+            </div>
+            <h3 className="text-xl font-bold mb-2">Affordable Rates</h3>
+            <p className="text-gray-600">Enjoy competitive pricing with no hidden charges.</p>
+          </div>
+          
+          <div className="bg-white p-6 rounded-xl shadow-sm">
+            <div className="w-12 h-12 bg-brand-green rounded-full flex items-center justify-center mb-4">
+              <CarTaxiFront className="text-white" size={20} />
+            </div>
+            <h3 className="text-xl font-bold mb-2">24/7 Service</h3>
+            <p className="text-gray-600">Available round the clock for your convenience.</p>
+          </div>
         </div>
       </div>
-      
-      {/* Make sure the CarTaxiFront icon is correctly used */}
-      <div className="bg-white p-6 rounded-xl shadow-sm">
-        <div className="w-12 h-12 bg-brand-green rounded-full flex items-center justify-center mb-4">
-          <CarTaxiFront className="text-white" size={20} />
-        </div>
-        <h3 className="text-xl font-bold mb-2">Diverse Fleet</h3>
-        <p className="text-gray-600">Choose from a variety of vehicle types to suit your specific needs.</p>
-      </div>
+      <Footer />
     </div>
   );
 };

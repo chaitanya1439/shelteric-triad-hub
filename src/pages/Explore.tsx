@@ -2,6 +2,7 @@
 import React from 'react';
 import Navbar from '@/components/Navbar';
 import ServicesOverview from '@/components/ServicesOverview';
+import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 
@@ -25,6 +26,7 @@ const Explore: React.FC = () => {
           </Button>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

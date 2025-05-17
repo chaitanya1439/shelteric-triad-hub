@@ -1,5 +1,7 @@
+
 import React from 'react';
 import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 import { Utensils } from 'lucide-react';
 
 const Food: React.FC = () => {
@@ -41,6 +43,7 @@ const Food: React.FC = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

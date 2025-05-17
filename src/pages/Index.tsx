@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import ServicesOverview from "@/components/ServicesOverview";
 import Testimonials from "@/components/Testimonials";
+import Footer from "@/components/Footer";
 
 const Index: React.FC = () => {
   return (
@@ -12,6 +13,7 @@ const Index: React.FC = () => {
       <HeroSection />
       <ServicesOverview />
       <Testimonials />
+      <Footer />
     </div>
   );
 };
