@@ -3,10 +3,12 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Menu, X, Search, User } from 'lucide-react';
+import SignInModal from './SignInModal';
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSignInOpen, setIsSignInOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,6 +29,11 @@ const Navbar: React.FC = () => {
     }`}>
       <div className="container mx-auto px-4 flex items-center justify-between">
         <Link to="/" className="flex items-center space-x-2">
+          <img 
+            src="/lovable-uploads/cde5b272-daac-4dc5-a4bb-37bb77e1b04c.png" 
+            alt="Shelteric Logo" 
+            className="h-10 w-auto"
+          />
           <span className="text-2xl font-bold text-brand-blue">Shelteric</span>
         </Link>
 
@@ -45,8 +52,13 @@ const Navbar: React.FC = () => {
             <Search size={18} />
             <span>Search</span>
           </Button>
-          <Button size="sm" className="bg-brand-blue hover:bg-brand-blue/90">
-            Sign In
+          <Button 
+            size="sm" 
+            className="bg-brand-blue hover:bg-brand-blue/90 flex items-center gap-1"
+            onClick={() => setIsSignInOpen(true)}
+          >
+            <User size={18} />
+            <span>Sign In</span>
           </Button>
         </nav>
 
@@ -90,12 +102,22 @@ const Navbar: React.FC = () => {
               <Search size={18} />
               <span>Search</span>
             </Button>
-            <Button className="bg-brand-blue hover:bg-brand-blue/90 w-full">
-              Sign In
+            <Button 
+              className="bg-brand-blue hover:bg-brand-blue/90 w-full flex justify-center items-center gap-1"
+              onClick={() => {
+                setIsMenuOpen(false);
+                setIsSignInOpen(true);
+              }}
+            >
+              <User size={18} />
+              <span>Sign In</span>
             </Button>
           </div>
         </div>
       )}
+
+      {/* Sign In Modal */}
+      <SignInModal isOpen={isSignInOpen} onClose={() => setIsSignInOpen(false)} />
     </header>
   );
 };
