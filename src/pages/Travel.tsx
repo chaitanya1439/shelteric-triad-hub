@@ -6,14 +6,14 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { MapPin, Search, Car, Bike, Clock, Ambulance, TaxiFront } from 'lucide-react';
+import { MapPin, Search, Car, Bike, Clock, Ambulance, CarTaxiFront } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 
 const Travel: React.FC = () => {
   const vehicleTypes = [
     { id: "bike", name: "Bike", icon: <Bike size={24} /> },
     { id: "cab", name: "Cab", icon: <Car size={24} /> },
-    { id: "taxi", name: "Taxi", icon: <TaxiFront size={24} /> },
+    { id: "taxi", name: "Taxi", icon: <CarTaxiFront size={24} /> },
     { id: "ambulance", name: "Ambulance", icon: <Ambulance size={24} /> }
   ];
   

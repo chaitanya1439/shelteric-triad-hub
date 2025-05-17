@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
-import { Bed, Hotel, House, MapPin, Restaurant, Bike, Car, TaxiFront, Ambulance } from 'lucide-react';
+import { Bed, Hotel, House, MapPin, Utensils, Bike, Car, CarTaxiFront, Ambulance } from 'lucide-react';
 
 const ServicesOverview: React.FC = () => {
   const serviceCategories = [
@@ -18,7 +18,7 @@ const ServicesOverview: React.FC = () => {
       title: "Food Services",
       description: "Discover restaurants and get food delivered to your doorstep",
       services: [
-        { name: "Restaurants", icon: <Restaurant className="text-brand-orange" size={24} /> },
+        { name: "Restaurants", icon: <Utensils className="text-brand-orange" size={24} /> },
         { name: "Food Delivery", icon: <MapPin className="text-brand-orange" size={24} /> }
       ]
     },
@@ -28,7 +28,7 @@ const ServicesOverview: React.FC = () => {
       services: [
         { name: "Bikes", icon: <Bike className="text-brand-green" size={24} /> },
         { name: "Cabs", icon: <Car className="text-brand-green" size={24} /> },
-        { name: "Taxi", icon: <TaxiFront className="text-brand-green" size={24} /> },
+        { name: "Taxi", icon: <CarTaxiFront className="text-brand-green" size={24} /> },
         { name: "Ambulance", icon: <Ambulance className="text-brand-green" size={24} /> }
       ]
     }
