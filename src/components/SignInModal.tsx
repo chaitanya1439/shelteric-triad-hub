@@ -4,7 +4,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { PhoneCall, ArrowRight, Google } from 'lucide-react';
+import { PhoneCall, ArrowRight, Github } from 'lucide-react';
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -117,7 +117,7 @@ const SignInModal: React.FC<SignInModalProps> = ({ isOpen, onClose }) => {
               className="w-full" 
               onClick={handleGoogleSignIn}
             >
-              <Google className="mr-2 h-4 w-4" />
+              <Github className="mr-2 h-4 w-4" />
               Sign in with Google
             </Button>
           </div>
