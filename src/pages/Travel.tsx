@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -285,7 +284,7 @@ const Travel: React.FC = () => {
               </div>
               <div className="bg-white p-6 rounded-xl shadow-sm">
                 <div className="w-12 h-12 bg-brand-green rounded-full flex items-center justify-center mb-4">
-                  <TaxiFront className="text-white" size={20} />
+                  <CarTaxiFront className="text-white" size={20} />
                 </div>
                 <h3 className="text-xl font-bold mb-2">Diverse Fleet</h3>
                 <p className="text-gray-600">Choose from a variety of vehicle types to suit your specific needs.</p>
