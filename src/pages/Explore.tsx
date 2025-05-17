@@ -11,7 +11,8 @@ const Explore: React.FC = () => {
   return (
     <div className="min-h-screen flex flex-col pb-16 md:pb-0">
       <Navbar />
-      <div className="container mx-auto px-4 py-16 flex-1">
+      <BottomNavbar />
+      <div className="container mx-auto px-4 py-10 flex-1">
         <div className="max-w-3xl mx-auto text-center mb-10">
           <h1 className="text-3xl md:text-4xl font-bold mb-6">Explore Shelteric Services</h1>
           <p className="text-lg text-gray-600 mb-8">
@@ -28,7 +29,6 @@ const Explore: React.FC = () => {
         </div>
       </div>
       <Footer />
-      <BottomNavbar />
     </div>
   );
 };

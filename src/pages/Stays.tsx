@@ -9,15 +9,9 @@ const Stays: React.FC = () => {
   return (
     <div className="min-h-screen flex flex-col pb-16 md:pb-0">
       <Navbar />
-      <div className="container mx-auto px-4 py-16 flex-1">
-        <div className="max-w-3xl mx-auto text-center mb-10">
-          <h1 className="text-3xl md:text-4xl font-bold mb-6">Find Your Perfect Stay</h1>
-          <p className="text-lg text-gray-600 mb-8">
-            Discover a wide range of accommodations in Hyderabad, from cozy rooms to luxurious suites.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <BottomNavbar />
+      <div className="container mx-auto px-4 py-10 flex-1">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
           {/* Example Stay Card */}
           <div className="bg-white rounded-xl shadow-md overflow-hidden">
             <img
@@ -105,9 +99,15 @@ const Stays: React.FC = () => {
             </div>
           </div>
         </div>
+        
+        <div className="max-w-3xl mx-auto text-center mb-10">
+          <h1 className="text-3xl md:text-4xl font-bold mb-6">Find Your Perfect Stay</h1>
+          <p className="text-lg text-gray-600 mb-8">
+            Discover a wide range of accommodations in Hyderabad, from cozy rooms to luxurious suites.
+          </p>
+        </div>
       </div>
       <Footer />
-      <BottomNavbar />
     </div>
   );
 };
