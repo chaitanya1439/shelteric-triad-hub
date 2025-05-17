@@ -2,11 +2,12 @@
 import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import BottomNavbar from '@/components/BottomNavbar';
 import { BedDouble, Calendar, Users } from 'lucide-react';
 
 const Stays: React.FC = () => {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col pb-16 md:pb-0">
       <Navbar />
       <div className="container mx-auto px-4 py-16 flex-1">
         <div className="max-w-3xl mx-auto text-center mb-10">
@@ -106,6 +107,7 @@ const Stays: React.FC = () => {
         </div>
       </div>
       <Footer />
+      <BottomNavbar />
     </div>
   );
 };

@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import BottomNavbar from '@/components/BottomNavbar';
 
 const NotFound: React.FC = () => {
   const location = useLocation();
@@ -18,7 +19,7 @@ const NotFound: React.FC = () => {
   }, [location.pathname]);
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col pb-16 md:pb-0">
       <Navbar />
       <div className="flex-1 text-center p-8">
         <h1 className="text-6xl font-bold text-brand-blue mb-4">404</h1>
@@ -31,6 +32,7 @@ const NotFound: React.FC = () => {
         </Button>
       </div>
       <Footer />
+      <BottomNavbar />
     </div>
   );
 };

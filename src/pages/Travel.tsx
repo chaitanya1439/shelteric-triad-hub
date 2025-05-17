@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import BottomNavbar from '@/components/BottomNavbar';
 import { CarTaxiFront } from 'lucide-react';
 
 const Travel: React.FC = () => {
@@ -22,7 +23,7 @@ const Travel: React.FC = () => {
   };
   
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col pb-16 md:pb-0">
       <Navbar />
       <div className="container mx-auto px-4 py-16 flex-1">
         <div className="max-w-3xl mx-auto text-center mb-10">
@@ -78,6 +79,7 @@ const Travel: React.FC = () => {
         </div>
       </div>
       <Footer />
+      <BottomNavbar />
     </div>
   );
 };
