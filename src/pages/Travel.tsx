@@ -1,11 +1,13 @@
+
 import React, { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import BottomNavbar from '@/components/BottomNavbar';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { MapPin, Search, Car, Bike, Clock, Ambulance, CarTaxiFront } from 'lucide-react';
+import { MapPin, Search, Car, Bike, Clock, Ambulance, CarTaxiFront, Shield, Star } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 
 const Travel: React.FC = () => {
@@ -28,7 +30,10 @@ const Travel: React.FC = () => {
       price: 12,
       time: "5-10 min",
       capacity: "4 persons",
-      image: "https://images.unsplash.com/photo-1590689860171-2a318eea3780?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80"
+      rating: 4.7,
+      trips: 2400,
+      image: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-4.0.3&auto=format&fit=crop&w=2940&q=80",
+      features: ["Air Conditioning", "Child Seat", "Luggage"]
     },
     {
       id: 2,
@@ -37,7 +42,10 @@ const Travel: React.FC = () => {
       price: 18,
       time: "8-12 min",
       capacity: "4 persons",
-      image: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80"
+      rating: 4.8,
+      trips: 1800,
+      image: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2940&q=80",
+      features: ["Air Conditioning", "Premium Seats", "Luggage", "Wifi"]
     },
     {
       id: 3,
@@ -46,7 +54,10 @@ const Travel: React.FC = () => {
       price: 25,
       time: "10-15 min",
       capacity: "4 persons",
-      image: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80"
+      rating: 4.9,
+      trips: 1200,
+      image: "https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?ixlib=rb-4.0.3&auto=format&fit=crop&w=2940&q=80",
+      features: ["Air Conditioning", "Leather Seats", "Luggage", "Wifi", "Drinks"]
     },
     {
       id: 4,
@@ -55,7 +66,10 @@ const Travel: React.FC = () => {
       price: 8,
       time: "3-5 min",
       capacity: "1 person",
-      image: "https://images.unsplash.com/photo-1558981403-c5f9899a28bc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80"
+      rating: 4.5,
+      trips: 3500,
+      image: "https://images.unsplash.com/photo-1558980664-1db506751c42?ixlib=rb-4.0.3&auto=format&fit=crop&w=2940&q=80",
+      features: ["Helmet", "Quick", "Rain Cover"]
     },
     {
       id: 5,
@@ -64,7 +78,10 @@ const Travel: React.FC = () => {
       price: 30,
       time: "8-10 min",
       capacity: "Emergency",
-      image: "https://images.unsplash.com/photo-1623793563977-91ccedc90c38?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2892&q=80"
+      rating: 4.9,
+      trips: 950,
+      image: "https://images.unsplash.com/photo-1623793563977-91ccedc90c38?ixlib=rb-4.0.3&auto=format&fit=crop&w=2940&q=80",
+      features: ["Medical Equipment", "Emergency Response", "Trained Staff"]
     },
     {
       id: 6,
@@ -73,12 +90,15 @@ const Travel: React.FC = () => {
       price: 15,
       time: "5-8 min",
       capacity: "4 persons",
-      image: "https://images.unsplash.com/photo-1511527661048-7fe73d85e9a4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2946&q=80"
+      rating: 4.6,
+      trips: 2100,
+      image: "https://images.unsplash.com/photo-1559342222-cee6d5429afc?ixlib=rb-4.0.3&auto=format&fit=crop&w=2940&q=80",
+      features: ["Air Conditioning", "Metered", "Receipt"]
     }
   ];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen pb-16 md:pb-0">
       <Navbar />
       
       <main className="pt-20">
@@ -228,30 +248,41 @@ const Travel: React.FC = () => {
             <h2 className="text-2xl font-bold mb-6">Available Ride Options</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {rideOptions.map((ride) => (
-                <div key={ride.id} className="service-card group">
+                <div key={ride.id} className="rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
                   <div className="relative">
                     <img 
                       src={ride.image} 
                       alt={ride.name} 
-                      className="w-full h-48 object-cover rounded-t-xl"
+                      className="w-full h-48 object-cover"
                     />
                     <div className="absolute top-3 right-3 bg-white px-2 py-1 rounded-md text-sm font-bold">
                       ${ride.price}
                     </div>
                   </div>
-                  <div className="p-4 bg-white rounded-b-xl border border-gray-100">
+                  <div className="p-4 bg-white">
                     <div className="flex items-start justify-between">
                       <div>
                         <h3 className="font-bold text-lg">{ride.name}</h3>
                         <p className="text-gray-600 text-sm">{ride.type}</p>
                       </div>
                       <div className="flex items-center bg-brand-green/10 px-2 py-1 rounded-md">
-                        <Clock size={14} className="text-brand-green mr-1" />
-                        <span className="font-medium text-sm">{ride.time}</span>
+                        <Star size={14} className="text-brand-green mr-1" fill="currentColor" />
+                        <span className="font-medium text-sm">{ride.rating}</span>
                       </div>
                     </div>
-                    <div className="mt-3 text-sm text-gray-600">
-                      <span>Capacity: {ride.capacity}</span>
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      {ride.features.map((feature, i) => (
+                        <span key={i} className="inline-block bg-gray-100 rounded-md px-2 py-1 text-xs">
+                          {feature}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="mt-3 flex items-center justify-between text-sm text-gray-600">
+                      <div className="flex items-center">
+                        <Clock size={14} className="mr-1" />
+                        <span>{ride.time}</span>
+                      </div>
+                      <span>{ride.trips} trips</span>
                     </div>
                     <Button className="w-full mt-4 bg-brand-green hover:bg-brand-green/90">
                       Book Now
@@ -284,96 +315,10 @@ const Travel: React.FC = () => {
               </div>
               <div className="bg-white p-6 rounded-xl shadow-sm">
                 <div className="w-12 h-12 bg-brand-green rounded-full flex items-center justify-center mb-4">
-                  <CarTaxiFront className="text-white" size={20} />
+                  <Shield className="text-white" size={20} />
                 </div>
-                <h3 className="text-xl font-bold mb-2">Diverse Fleet</h3>
-                <p className="text-gray-600">Choose from a variety of vehicle types to suit your specific needs.</p>
-              </div>
-            </div>
-          </div>
-        </section>
-        
-        {/* Emergency Services */}
-        <section className="py-16">
-          <div className="container mx-auto px-4">
-            <div className="bg-red-50 p-6 md:p-10 rounded-xl">
-              <div className="flex flex-col md:flex-row items-center">
-                <div className="md:w-2/3 mb-6 md:mb-0 md:pr-8">
-                  <h2 className="text-2xl md:text-3xl font-bold text-red-600 mb-4">Emergency Services</h2>
-                  <p className="text-gray-700 mb-6">
-                    Need urgent help? Our emergency services are available 24/7. Request an ambulance with just a few taps.
-                  </p>
-                  <ul className="space-y-2 mb-6">
-                    <li className="flex items-center">
-                      <div className="w-5 h-5 bg-red-600 rounded-full mr-3 flex items-center justify-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                        </svg>
-                      </div>
-                      <span>Quick response times</span>
-                    </li>
-                    <li className="flex items-center">
-                      <div className="w-5 h-5 bg-red-600 rounded-full mr-3 flex items-center justify-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                        </svg>
-                      </div>
-                      <span>Trained medical professionals</span>
-                    </li>
-                    <li className="flex items-center">
-                      <div className="w-5 h-5 bg-red-600 rounded-full mr-3 flex items-center justify-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                        </svg>
-                      </div>
-                      <span>Available 24/7</span>
-                    </li>
-                  </ul>
-                  <Button className="bg-red-600 hover:bg-red-700">
-                    Request Ambulance
-                  </Button>
-                </div>
-                <div className="md:w-1/3">
-                  <img 
-                    src="https://images.unsplash.com/photo-1623793563977-91ccedc90c38?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2892&q=80" 
-                    alt="Emergency services" 
-                    className="rounded-lg w-full"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        
-        {/* Download App Section */}
-        <section className="py-16 bg-brand-dark text-white">
-          <div className="container mx-auto px-4">
-            <div className="flex flex-col md:flex-row items-center">
-              <div className="md:w-1/2 mb-8 md:mb-0">
-                <h2 className="text-3xl font-bold mb-4">Download the Shelteric App</h2>
-                <p className="mb-6 text-lg">
-                  Get the full experience with our mobile app. Book rides, track drivers, and manage payments all in one place.
-                </p>
-                <div className="flex flex-wrap gap-4">
-                  <Button variant="outline" className="border-white text-white hover:bg-white hover:text-brand-dark">
-                    App Store
-                  </Button>
-                  <Button variant="outline" className="border-white text-white hover:bg-white hover:text-brand-dark">
-                    Google Play
-                  </Button>
-                </div>
-              </div>
-              <div className="md:w-1/2 flex justify-center">
-                <div className="relative w-64 h-96">
-                  <div className="absolute -top-4 -left-4 w-full h-full bg-brand-green rounded-xl"></div>
-                  <div className="absolute top-0 left-0 w-full h-full bg-white rounded-xl overflow-hidden">
-                    <img 
-                      src="https://images.unsplash.com/photo-1598816983469-a6168821d6d6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2538&q=80" 
-                      alt="Shelteric mobile app" 
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                </div>
+                <h3 className="text-xl font-bold mb-2">Safe Rides</h3>
+                <p className="text-gray-600">All drivers are verified and vehicles regularly inspected for safety.</p>
               </div>
             </div>
           </div>
@@ -381,6 +326,7 @@ const Travel: React.FC = () => {
       </main>
       
       <Footer />
+      <BottomNavbar />
     </div>
   );
 };

@@ -1,11 +1,13 @@
+
 import React, { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import BottomNavbar from '@/components/BottomNavbar';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { MapPin, Search, Utensils, Clock, ChefHat } from 'lucide-react';
+import { MapPin, Search, Utensils, Clock, ChefHat, Star } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 
 const Food: React.FC = () => {
@@ -20,21 +22,25 @@ const Food: React.FC = () => {
   const foodDeliveryOptions = [
     {
       id: 1,
-      name: "Pizza",
+      name: "Margherita Pizza",
       restaurant: "The Italian Place",
       price: 15,
       time: "20-25 min",
       rating: 4.5,
-      image: "https://images.unsplash.com/photo-1593560708920-6195cbfa5765?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2935&q=80"
+      reviews: 220,
+      image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=2940&q=80",
+      tags: ["Italian", "Vegetarian", "Popular"]
     },
     {
       id: 2,
-      name: "Tacos",
+      name: "Beef Tacos (3)",
       restaurant: "Mexican Grill",
       price: 12,
       time: "15-20 min",
       rating: 4.2,
-      image: "https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2935&q=80"
+      reviews: 187,
+      image: "https://images.unsplash.com/photo-1599974579688-8dbdd335c77f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2940&q=80",
+      tags: ["Mexican", "Spicy", "Bestseller"]
     },
     {
       id: 3,
@@ -43,7 +49,9 @@ const Food: React.FC = () => {
       price: 18,
       time: "25-30 min",
       rating: 4.0,
-      image: "https://images.unsplash.com/photo-1624517863558-4959c711cae8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80"
+      reviews: 145,
+      image: "https://images.unsplash.com/photo-1525755662778-989d0524087e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2940&q=80",
+      tags: ["Chinese", "Spicy", "Popular"]
     },
     {
       id: 4,
@@ -52,30 +60,36 @@ const Food: React.FC = () => {
       price: 20,
       time: "30-35 min",
       rating: 4.7,
-      image: "https://images.unsplash.com/photo-1614353394941-3434f2ea99d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80"
+      reviews: 276,
+      image: "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?ixlib=rb-4.0.3&auto=format&fit=crop&w=2940&q=80",
+      tags: ["Indian", "Rich", "Creamy"]
     },
     {
       id: 5,
-      name: "Burger",
+      name: "Double Cheeseburger",
       restaurant: "Burger Joint",
       price: 10,
       time: "15-20 min",
       rating: 4.3,
-      image: "https://images.unsplash.com/photo-1568901342037-24c7e8a4c085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2832&q=80"
+      reviews: 312,
+      image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-4.0.3&auto=format&fit=crop&w=2940&q=80",
+      tags: ["American", "Fast Food", "Bestseller"]
     },
     {
       id: 6,
-      name: "Sushi",
+      name: "Assorted Sushi (12 pcs)",
       restaurant: "Sushi Bar",
       price: 25,
       time: "25-30 min",
       rating: 4.8,
-      image: "https://images.unsplash.com/photo-1613769049987-b31b641f2590?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80"
+      reviews: 189,
+      image: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2940&q=80",
+      tags: ["Japanese", "Healthy", "Premium"]
     }
   ];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen pb-16 md:pb-0">
       <Navbar />
       
       <main className="pt-20">
@@ -213,30 +227,41 @@ const Food: React.FC = () => {
             <h2 className="text-2xl font-bold mb-6">Food Delivery Options</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {foodDeliveryOptions.map((food) => (
-                <div key={food.id} className="service-card group">
+                <div key={food.id} className="rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
                   <div className="relative">
                     <img 
                       src={food.image} 
                       alt={food.name} 
-                      className="w-full h-48 object-cover rounded-t-xl"
+                      className="w-full h-48 object-cover"
                     />
                     <div className="absolute top-3 right-3 bg-white px-2 py-1 rounded-md text-sm font-bold">
                       ${food.price}
                     </div>
                   </div>
-                  <div className="p-4 bg-white rounded-b-xl border border-gray-100">
+                  <div className="p-4 bg-white">
                     <div className="flex items-start justify-between">
                       <div>
                         <h3 className="font-bold text-lg">{food.name}</h3>
                         <p className="text-gray-600 text-sm">{food.restaurant}</p>
                       </div>
                       <div className="flex items-center bg-brand-orange/10 px-2 py-1 rounded-md">
-                        <Clock size={14} className="text-brand-orange mr-1" />
-                        <span className="font-medium text-sm">{food.time}</span>
+                        <Star size={14} className="text-brand-orange mr-1" fill="currentColor" />
+                        <span className="font-medium text-sm">{food.rating}</span>
                       </div>
                     </div>
-                    <div className="mt-3 text-sm text-gray-600">
-                      <span>Rating: {food.rating}</span>
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      {food.tags.map((tag, i) => (
+                        <span key={i} className="inline-block bg-gray-100 rounded-md px-2 py-1 text-xs">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="mt-3 flex items-center justify-between text-sm text-gray-600">
+                      <div className="flex items-center">
+                        <Clock size={14} className="mr-1" />
+                        <span>{food.time}</span>
+                      </div>
+                      <span>{food.reviews} reviews</span>
                     </div>
                     <Button className="w-full mt-4 bg-brand-orange hover:bg-brand-orange/90">
                       Order Now
@@ -277,43 +302,10 @@ const Food: React.FC = () => {
             </div>
           </div>
         </section>
-        
-        {/* Download App Section */}
-        <section className="py-16 bg-brand-dark text-white">
-          <div className="container mx-auto px-4">
-            <div className="flex flex-col md:flex-row items-center">
-              <div className="md:w-1/2 mb-8 md:mb-0">
-                <h2 className="text-3xl font-bold mb-4">Download the Shelteric App</h2>
-                <p className="mb-6 text-lg">
-                  Get the full experience with our mobile app. Order food, track deliveries, and manage payments all in one place.
-                </p>
-                <div className="flex flex-wrap gap-4">
-                  <Button variant="outline" className="border-white text-white hover:bg-white hover:text-brand-dark">
-                    App Store
-                  </Button>
-                  <Button variant="outline" className="border-white text-white hover:bg-white hover:text-brand-dark">
-                    Google Play
-                  </Button>
-                </div>
-              </div>
-              <div className="md:w-1/2 flex justify-center">
-                <div className="relative w-64 h-96">
-                  <div className="absolute -top-4 -left-4 w-full h-full bg-brand-orange rounded-xl"></div>
-                  <div className="absolute top-0 left-0 w-full h-full bg-white rounded-xl overflow-hidden">
-                    <img 
-                      src="https://images.unsplash.com/photo-1512621776951-a57141f2e3bb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80" 
-                      alt="Shelteric mobile app" 
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
       </main>
       
       <Footer />
+      <BottomNavbar />
     </div>
   );
 };

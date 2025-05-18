@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import BottomNavbar from '@/components/BottomNavbar';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Calendar } from '@/components/ui/calendar';
@@ -34,7 +35,8 @@ const Stays: React.FC = () => {
       price: 149,
       rating: 4.8,
       reviewCount: 320,
-      image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80",
+      image: "https://images.unsplash.com/photo-1618773928121-c32242e63f39?ixlib=rb-4.0.3&auto=format&fit=crop&w=2940&q=80",
+      amenities: ["Free WiFi", "Swimming Pool", "Spa", "Restaurant"]
     },
     {
       id: 2,
@@ -44,7 +46,8 @@ const Stays: React.FC = () => {
       price: 89,
       rating: 4.6,
       reviewCount: 215,
-      image: "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2951&q=80",
+      image: "https://images.unsplash.com/photo-1582719508461-905c673771fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=2940&q=80",
+      amenities: ["Kitchen", "Washer", "Free WiFi", "Workspace"]
     },
     {
       id: 3,
@@ -54,7 +57,8 @@ const Stays: React.FC = () => {
       price: 120,
       rating: 4.7,
       reviewCount: 180,
-      image: "https://images.unsplash.com/photo-1531835551805-16d864c8d311?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2787&q=80",
+      image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=2940&q=80",
+      amenities: ["Balcony", "Air Conditioning", "Free WiFi", "Kitchen"]
     },
     {
       id: 4,
@@ -64,7 +68,8 @@ const Stays: React.FC = () => {
       price: 135,
       rating: 4.5,
       reviewCount: 260,
-      image: "https://images.unsplash.com/photo-1618773928121-c32242e63f39?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80",
+      image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=2940&q=80",
+      amenities: ["River View", "Breakfast", "Gym", "Bar"]
     },
     {
       id: 5,
@@ -74,7 +79,8 @@ const Stays: React.FC = () => {
       price: 45,
       rating: 4.3,
       reviewCount: 420,
-      image: "https://images.unsplash.com/photo-1520277739336-7bf67edfa768?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2879&q=80",
+      image: "https://images.unsplash.com/photo-1590490360182-c33d57733427?ixlib=rb-4.0.3&auto=format&fit=crop&w=2874&q=80",
+      amenities: ["Shared Kitchen", "Lounge", "Free WiFi", "Lockers"]
     },
     {
       id: 6,
@@ -84,12 +90,13 @@ const Stays: React.FC = () => {
       price: 195,
       rating: 4.9,
       reviewCount: 150,
-      image: "https://images.unsplash.com/photo-1574362848149-11496d93a7c7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2584&q=80",
+      image: "https://images.unsplash.com/photo-1574362848149-11496d93a7c7?ixlib=rb-4.0.3&auto=format&fit=crop&w=2940&q=80",
+      amenities: ["Garden", "Parking", "BBQ", "Full Kitchen"]
     }
   ];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen pb-16 md:pb-0">
       <Navbar />
       
       <main className="pt-20">
@@ -219,18 +226,18 @@ const Stays: React.FC = () => {
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {stayListings.map((stay) => (
-                <div key={stay.id} className="service-card group">
+                <div key={stay.id} className="group rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
                   <div className="relative">
                     <img 
                       src={stay.image} 
                       alt={stay.name} 
-                      className="w-full h-48 md:h-56 object-cover rounded-t-xl"
+                      className="w-full h-48 md:h-56 object-cover"
                     />
                     <div className="absolute top-3 right-3 bg-white px-2 py-1 rounded-md text-sm font-bold">
                       ${stay.price}/night
                     </div>
                   </div>
-                  <div className="p-4 bg-white rounded-b-xl border border-gray-100">
+                  <div className="p-4 bg-white">
                     <div className="flex items-start justify-between">
                       <div>
                         <h3 className="font-bold text-lg">{stay.name}</h3>
@@ -243,6 +250,13 @@ const Stays: React.FC = () => {
                         <Star size={14} className="text-brand-blue mr-1" fill="currentColor" />
                         <span className="font-medium text-sm">{stay.rating}</span>
                       </div>
+                    </div>
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      {stay.amenities.map((amenity, idx) => (
+                        <span key={idx} className="inline-block bg-gray-100 rounded-md px-2 py-1 text-xs">
+                          {amenity}
+                        </span>
+                      ))}
                     </div>
                     <div className="mt-3 text-sm text-gray-600">
                       <span className="inline-block bg-gray-100 rounded-md px-2 py-1 mr-2">
@@ -266,6 +280,7 @@ const Stays: React.FC = () => {
       </main>
       
       <Footer />
+      <BottomNavbar />
     </div>
   );
 };
